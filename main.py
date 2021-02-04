@@ -2,7 +2,7 @@
 # Hoping I can keep up with commenting and remembering every bit of code
 import imageio as image
 import matplotlib.pyplot as plt
-
+import numpy as np
 
 # Load "chest-220.dcm"
 im = image.imread("./data/tcia-chest-ct/chest-220.dcm")
@@ -36,3 +36,13 @@ plt.axis('off')
 
 # Render the image
 plt.show()
+
+
+# Read in each 2D image
+im1 = imageio.imread('chest-220.dcm')
+im2 = imageio.imread('chest-221.dcm')
+im3 = imageio.imread('chest-222.dcm')
+
+# Stack images into a volume
+vol = np.stack([im1, im2, im3], axis=0)
+print('Volume dimensions:', vol.shape)
